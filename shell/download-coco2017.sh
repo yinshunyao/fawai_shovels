@@ -1,4 +1,21 @@
 #!/usr/bin/env bash
+# --- shovel ---
+# id: download_coco2017
+# title: Download COCO 2017 detection packs
+# when_to_use: Need official COCO 2017 train/val images and annotations locally
+# runtime: bash
+# kind: shovel
+# requires: bash, curl|wget; unzip if COCO_UNZIP=1
+# side_effects: network,fs_write
+# platforms: macOS,Linux
+# tags: dataset,coco
+# privacy: public
+# completeness: 5
+# generality: 4
+# efficiency: 3
+# invoke: DEST=<data-dir> bash fawai_shovels/shell/download-coco2017.sh
+# depends_shovels: 
+# --- end-shovel ---
 # Download COCO 2017 detect packs (train/val images + trainval annotations) into DEST.
 # Usage:
 #   DEST=<数据目录> bash fawai_shovels/shell/download-coco2017.sh

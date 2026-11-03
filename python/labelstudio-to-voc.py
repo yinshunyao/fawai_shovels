@@ -1,5 +1,22 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+# --- shovel ---
+# id: labelstudio_to_voc
+# title: Label Studio boxes to Pascal VOC
+# when_to_use: Convert Label Studio rectangle export JSON to VOC XML
+# runtime: python
+# kind: shovel
+# requires: stdlib
+# side_effects: fs_read,fs_write
+# platforms: macOS,Linux,Windows
+# tags: dataset,voc,labelstudio
+# privacy: public
+# completeness: 4
+# generality: 4
+# efficiency: 3
+# invoke: python3 fawai_shovels/python/labelstudio-to-voc.py
+# depends_shovels: 
+# --- end-shovel ---
 """将 Label Studio 矩形框导出转换为 Pascal VOC（LabelImg）。
 
 输入为导出 JSON 或包含 JSON 与图像的目录。具体路径用环境变量传入，不写在本文件中。

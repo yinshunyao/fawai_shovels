@@ -1,4 +1,21 @@
 #!/usr/bin/env python3
+# --- shovel ---
+# id: check_knowledge_svg
+# title: Validate knowledge SVG files
+# when_to_use: Check SVG UTF-8 and basic well-formedness under a path
+# runtime: python
+# kind: shovel
+# requires: stdlib
+# side_effects: fs_read
+# platforms: macOS,Linux,Windows
+# tags: svg,qa
+# privacy: public
+# completeness: 4
+# generality: 3
+# efficiency: 5
+# invoke: python3 fawai_shovels/python/check-knowledge-svg.py <svg-or-dir>
+# depends_shovels: 
+# --- end-shovel ---
 """Check knowledge-base SVG files: UTF-8 text, well-formed-ish XML, basic SVG root.
 
 Usage (from workspace root, or any cwd):

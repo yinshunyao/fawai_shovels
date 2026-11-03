@@ -1,4 +1,21 @@
 #!/usr/bin/env bash
+# --- shovel ---
+# id: remote_job_status
+# title: Remote job status summary
+# when_to_use: List recent running/queued/done jobs on a remote training host
+# runtime: bash
+# kind: launcher
+# requires: bash, ssh; runs remote_job_status.py
+# side_effects: remote,fs_read
+# platforms: Linux
+# tags: remote,status
+# privacy: public
+# completeness: 4
+# generality: 4
+# efficiency: 4
+# invoke: STATUS_SSH=… STATUS_REMOTE_CWD=… bash fawai_shovels/shell/remote-job-status.sh
+# depends_shovels: remote_job_status_py,ssh_run_with_pass
+# --- end-shovel ---
 # Query recent job status on a remote training host (running / queued / done).
 # Does not kill processes. Password only via env.
 #

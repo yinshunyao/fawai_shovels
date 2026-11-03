@@ -1,5 +1,22 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+# --- shovel ---
+# id: merge_voc_dirs
+# title: Merge VOC dirs with MD5 dedupe
+# when_to_use: Merge two Pascal VOC trees; identical images kept once
+# runtime: python
+# kind: shovel
+# requires: stdlib
+# side_effects: fs_read,fs_write
+# platforms: macOS,Linux,Windows
+# tags: dataset,voc
+# privacy: public
+# completeness: 4
+# generality: 4
+# efficiency: 3
+# invoke: python3 fawai_shovels/python/merge-voc-dirs.py
+# depends_shovels: 
+# --- end-shovel ---
 """合并两个 Pascal VOC 目录，按图片 MD5 去重。
 
 先写入第一个目录的样本，再写入第二个。内容相同的图片只保留先出现的那一份，

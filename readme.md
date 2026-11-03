@@ -2,21 +2,24 @@
 
 English: [`readme.en.md`](readme.en.md)
 
-本目录（`fawai_shovels/`）存放 **可复用的系统命令包装与辅助脚本**（非业务产品代码）；已从 `.cursor/tools` 迁出。  
-规则见 workspace：`.cursor/rules/rules-cursor-tools.mdc`（真源目录为本仓）。
+本目录（`fawai_shovels/`）存放 **可分享的单文件铲子**（脚本/小工具；非宿主业务代码）。  
+真源格式见 [`SHOVEL.md`](SHOVEL.md)；模板与校验在 `scaffold/`。
 
-**硬性规定**：本目录下脚本或子目录有任何变动（新增、修改、删除、重命名），必须在同一回合更新 **本文件与 `readme.en.md`**。只改工具、不改台账，视为未完成。
+**硬性规定**：新增/改铲须（1）文首 `# --- shovel ---` 自述完整（2）同回合更新 **本文件与 `readme.en.md`**（3）`python3 fawai_shovels/scaffold/catalog.py --check` 通过。
 
-## 使用约定
+## 铲子约定（相对旧 hipp-tools）
 
-1. **先查本文件**再动手：已有工具 → 直接调用 / 原地小改，并在同一回合更新中英文台账。
-2. **没有合适工具** → 按分类新建到对应子目录，并在本文件与 `readme.en.md` 对应分类下登记。
-3. **禁止**每次对话新建一次性脚本后丢弃；同类能力应沉淀为工具。
-4. 业务实现仍写在各子工程；本目录只收「助手侧可复用工具」。
-5. **不必登记**：单次 `ls`/`cat`/`git status` 探查；应登记：会重复用的流程、新建的辅助脚本。
-6. **按通用性分流**：通用性 ≥3 放本仓；≤2 与产品部署放 workspace `.cursor/tools/`。
-7. **三维度评分**：新增或改动工具时，助手须按下文标尺对 **完备性 / 通用性 / 效率** 自动打分（1～5）并写入台账，禁止留空或只填通用性。
-8. **脱敏**：源码、注释和台账只写通用说明（用途、输入输出形态、依赖、调用方式）。禁止写入密钥、口令、令牌、内网地址、账号、客户名、合同报价、未公开数据路径、样本清单、训练机绝对路径。具体值用参数或环境变量；台账用 `<数据目录>` 占位。
+1. **平台适用性（强制）**：文首 `platforms` 必填；词表仅 `macOS` / `Linux` / `Windows`（或已核实的 `all`=`三者`）。`runtime: bash` 不得含 Windows、不得写 `all`。未列出的平台视为不支持。详见 `SHOVEL.md`；`--check` 不通过不得合入。
+2. **一铲一文件**：逻辑自洽；`kind: library` 可被同仓 import；`launcher` 可薄封装另一铲。
+3. **文首自述**：字段对齐 Skill（`id` / `title` / `when_to_use` + runtime/requires/side_effects/platforms/scores…），见 `SHOVEL.md`。
+4. **无宿主业务依赖**：禁止 `import fawai_avatar`；禁止默认值写未公开路径/客户信息。
+5. **隐私**：默认可标 `privacy: public`；含隐私不得进公共包。
+6. **先查本文件 / `catalog.py --list`** 再动手；禁止对话里一次性脚本用完即弃。
+7. **通用性 ≥3** 留本仓；≤2 与产品部署放 workspace `.cursor/tools/`。
+8. **三维度评分**写入文首与台账（完备性 / 通用性 / 效率，1～5）。
+9. **脱敏**：台账与源码只用占位符；口令仅 env。
+
+新建铲子：复制 `scaffold/TEMPLATE.py` 或 `TEMPLATE.sh` → 放到 `shell/` / `python/` / `media/` → 填 meta → `--check` → 登记下表。
 
 ## 调用方式
 
@@ -36,21 +39,29 @@ bash fawai_shovels/shell/workspace-fs.sh glob '**/*.md' [--path DIR]
 bash fawai_shovels/shell/workspace-fs.sh catalog rsync
 ```
 
-`grep` 依赖本机 `rg`（ripgrep）。可选 `FAWAI_SHOVELS_ROOT`（兼容旧名 `HIPP_TOOLS_ROOT`）/ `WORKSPACE_FS_PYTHON`。工程专用脚本见 `.cursor/tools/`。
+`grep` 依赖本机 `rg`（ripgrep）。可选 `FAWAI_SHOVELS_ROOT`（兼容旧名 `HIPP_TOOLS_ROOT`）/ `WORKSPACE_FS_PYTHON`。
 
-> 本目录由 `hipp-tools` 更名为 `fawai_shovels`；GitHub：https://github.com/yinshunyao/fawai_shovels（原 `yinshunyao/hipp-tools` 已改名，旧 URL 会跳转）。
+校验文首：
+
+```bash
+python3 fawai_shovels/scaffold/catalog.py --check
+python3 fawai_shovels/scaffold/catalog.py --list
+```
+
+> 由 `hipp-tools` 更名；GitHub：https://github.com/yinshunyao/fawai_shovels
 
 ## 目录分类
 
 | 分类目录 | 用途 |
 |:---|:---|
-| `shell/` | 跨工程可复用 shell / 一键命令包装 |
-| `python/` | 跨工程可复用 Python 辅助脚本 |
-| `media/` | 跨工程音视频、图片等处理 |
-| `git/` | 跨工程仓库检查、批量 git 辅助 |
+| `shell/` | Bash 铲子 |
+| `python/` | Python 铲子 / library |
+| `media/` | 音视频、图片铲子 |
+| `scaffold/` | 格式模板 + `catalog.py` 校验（非业务铲目录表） |
+| `git/` | 仓库辅助（暂空） |
 | `misc/` | 暂无法归类 |
 
-新建类型分类时：先增上表一行，再建目录。**工程专用**脚本放在 `.cursor/tools/<工程名>/`，台账见 `.cursor/tools/readme.md`；本仓只收**通用性 ≥3** 的工具（1～5 分）。
+新建类型分类时：先增上表一行，再建目录。**工程专用**脚本放在 `.cursor/tools/<工程名>/`。
 
 ---
 
@@ -134,6 +145,12 @@ bash fawai_shovels/shell/workspace-fs.sh catalog rsync
 |:---|:---:|:---:|:---:|:---|:---|:---|
 | `media/photo-remove-watermark-deai.py` | 3 | 3 | 3 | 去右下角半透明水印 + 轻度实拍感 | 改 `__main__` | OpenCV+numpy；角区比例固定 |
 | `media/redact-image-words.py` | 4 | 3 | 3 | OCR 涂盖图中敏感词 | `--input/--output/--word` | Pillow + tesseract |
+
+## scaffold/
+
+| 路径 | 完备性 | 通用性 | 效率 | 用途 | 调用 | 备注 |
+|:---|:---:|:---:|:---:|:---|:---|:---|
+| `scaffold/catalog.py` | 5 | 5 | 5 | 扫描/校验文首 shovel meta | `python3 fawai_shovels/scaffold/catalog.py --check` | 模板见同目录 `TEMPLATE.*` |
 
 ## git/
 

@@ -1,4 +1,21 @@
 #!/usr/bin/env bash
+# --- shovel ---
+# id: remote_pip_systemd_upgrade
+# title: Remote pip upgrade + systemd restart
+# when_to_use: Upgrade a pip package on a remote host and restart its systemd unit
+# runtime: bash
+# kind: shovel
+# requires: bash, ssh; uses ssh_run_with_pass
+# side_effects: remote,process
+# platforms: Linux
+# tags: remote,pip,systemd
+# privacy: public
+# completeness: 4
+# generality: 5
+# efficiency: 5
+# invoke: REMOTE_SSH=user@host REMOTE_PIP_PACKAGE=<pkg> bash fawai_shovels/shell/remote-pip-systemd-upgrade.sh
+# depends_shovels: ssh_run_with_pass
+# --- end-shovel ---
 # On a remote host: pip install -U a package (optional pin) and systemctl restart a unit.
 #
 # Required:

@@ -1,4 +1,21 @@
 #!/usr/bin/env python3
+# --- shovel ---
+# id: workspace_fs
+# title: Cursor-like read/grep/glob/catalog
+# when_to_use: Outside Cursor: read file slices, ripgrep, glob, or search shovel ledgers
+# runtime: python
+# kind: shovel
+# requires: stdlib; grep needs rg
+# side_effects: fs_read
+# platforms: macOS,Linux,Windows
+# tags: fs,search,catalog
+# privacy: public
+# completeness: 5
+# generality: 5
+# efficiency: 5
+# invoke: python3 fawai_shovels/python/workspace-fs.py --help
+# depends_shovels: 
+# --- end-shovel ---
 """Cursor-like workspace helpers for use outside Cursor: read / grep / glob / catalog.
 
 Requires: Python 3.8+ (stdlib). Subcommand `grep` needs `rg` (ripgrep) on PATH.

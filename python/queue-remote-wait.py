@@ -1,5 +1,22 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+# --- shovel ---
+# id: queue_remote_wait
+# title: Wait for processes then run
+# when_to_use: On the job host: poll until blockers exit, then run one command
+# runtime: python
+# kind: shovel
+# requires: stdlib
+# side_effects: process
+# platforms: Linux
+# tags: queue,remote
+# privacy: public
+# completeness: 5
+# generality: 4
+# efficiency: 4
+# invoke: python3 queue-remote-wait.py <wait-id>
+# depends_shovels: 
+# --- end-shovel ---
 """Wait until named processes exit, then run one shell command.
 
 Launched by ``shell/queue-remote-after.sh`` on the machine that runs the job.

@@ -1,4 +1,21 @@
 #!/usr/bin/env bash
+# --- shovel ---
+# id: download_voc_yolo
+# title: Download YOLO VOC.yaml zip packs
+# when_to_use: Need Ultralytics VOC.yaml release zips (2007/2012)
+# runtime: bash
+# kind: shovel
+# requires: bash, curl|wget; unzip if VOC_UNZIP=1
+# side_effects: network,fs_write
+# platforms: macOS,Linux
+# tags: dataset,voc,yolo
+# privacy: public
+# completeness: 4
+# generality: 4
+# efficiency: 4
+# invoke: DEST=<data-dir> bash fawai_shovels/shell/download-voc-yolo.sh
+# depends_shovels: 
+# --- end-shovel ---
 # Download PASCAL VOC packs used by Ultralytics YOLO VOC.yaml (2007 trainval/test + 2012 trainval).
 # Default: download archives only (no unzip). Uses Ultralytics GitHub release assets (.zip), same as VOC.yaml.
 # Usage:

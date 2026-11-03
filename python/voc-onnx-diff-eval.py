@@ -1,4 +1,21 @@
 #!/usr/bin/env python3
+# --- shovel ---
+# id: voc_onnx_diff_eval
+# title: VOC vs ONNX detection IoU diff
+# when_to_use: Compare ONNX detector outputs to VOC boxes and dump FP/FN visuals
+# runtime: python
+# kind: shovel
+# requires: onnxruntime, numpy, opencv-python; optional Pillow
+# side_effects: fs_read,fs_write
+# platforms: macOS,Linux,Windows
+# tags: eval,onnx,voc
+# privacy: public
+# completeness: 3
+# generality: 3
+# efficiency: 2
+# invoke: python3 fawai_shovels/python/voc-onnx-diff-eval.py
+# depends_shovels: 
+# --- end-shovel ---
 """Pascal VOC 上跑 RT-DETRv2 ONNX，按 IoU 匹配后输出与标注的差异。
 
 用途：本地用已导出的 .onnx 对 VOC 包做推理，与 Annotations 在给定 IoU

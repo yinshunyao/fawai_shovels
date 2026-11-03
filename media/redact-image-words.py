@@ -1,4 +1,21 @@
 #!/usr/bin/env python3
+# --- shovel ---
+# id: redact_image_words
+# title: OCR redact words on image
+# when_to_use: Cover OCR-matched sensitive words on a screenshot/image
+# runtime: python
+# kind: shovel
+# requires: Pillow, tesseract
+# side_effects: fs_read,fs_write,process
+# platforms: macOS,Linux,Windows
+# tags: media,ocr,redact
+# privacy: public
+# completeness: 4
+# generality: 3
+# efficiency: 3
+# invoke: python3 fawai_shovels/media/redact-image-words.py --input <img> --output <out> --word <w>
+# depends_shovels: 
+# --- end-shovel ---
 """Cover matching words on an image (OCR boxes), optional title bar rewrite.
 
 Designed for promo screenshot desensitization: blot brand tokens, redraw header.

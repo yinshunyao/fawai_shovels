@@ -1,5 +1,22 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+# --- shovel ---
+# id: stat_voc_annotations
+# title: VOC box class/size stats
+# when_to_use: Summarize Pascal VOC annotation class counts and box sizes
+# runtime: python
+# kind: shovel
+# requires: stdlib
+# side_effects: fs_read
+# platforms: macOS,Linux,Windows
+# tags: dataset,voc,stats
+# privacy: public
+# completeness: 5
+# generality: 4
+# efficiency: 3
+# invoke: python3 fawai_shovels/python/stat-voc-annotations.py
+# depends_shovels: 
+# --- end-shovel ---
 """统计 Pascal VOC 标注框的类型与尺寸分布。
 
 支持一个或多个 VOC 根目录（或直接指向 Annotations）。仅标准库。

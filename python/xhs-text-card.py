@@ -1,4 +1,21 @@
 #!/usr/bin/env python3
+# --- shovel ---
+# id: xhs_text_card
+# title: Xiaohongshu text card image
+# when_to_use: Compose a few Chinese lines into a 3:4 vertical text card
+# runtime: python
+# kind: shovel
+# requires: Pillow
+# side_effects: fs_write
+# platforms: macOS,Linux,Windows
+# tags: media,image
+# privacy: public
+# completeness: 3
+# generality: 3
+# efficiency: 3
+# invoke: python3 fawai_shovels/python/xhs-text-card.py
+# depends_shovels: 
+# --- end-shovel ---
 """几行中文合成一张小红书竖版字图（3:4）。
 
 用法：改 __main__ 里的 LINES / OUT 后运行

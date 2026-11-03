@@ -1,4 +1,21 @@
 #!/usr/bin/env bash
+# --- shovel ---
+# id: ssh_run_with_pass
+# title: Run command with optional SSH password
+# when_to_use: Wrap ssh/rsync that may prompt for password; prefer keys
+# runtime: bash
+# kind: shovel
+# requires: bash; optional expect
+# side_effects: process
+# platforms: macOS,Linux
+# tags: ssh,expect
+# privacy: public
+# completeness: 5
+# generality: 5
+# efficiency: 5
+# invoke: SSH_PASS=<pass> bash fawai_shovels/shell/ssh-run-with-pass.sh -- ssh user@host 'cmd'
+# depends_shovels: 
+# --- end-shovel ---
 # Run a local command that may prompt for an SSH/rsync password via expect.
 # Prefer ssh keys; password is optional and must stay in env (never commit).
 #

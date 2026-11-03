@@ -1,5 +1,22 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+# --- shovel ---
+# id: coco_cvat_to_voc
+# title: CVAT COCO to Pascal VOC
+# when_to_use: Convert CVAT COCO detection JSON to VOC XML
+# runtime: python
+# kind: shovel
+# requires: stdlib
+# side_effects: fs_read,fs_write
+# platforms: macOS,Linux,Windows
+# tags: dataset,voc,cvat
+# privacy: public
+# completeness: 4
+# generality: 4
+# efficiency: 3
+# invoke: python3 fawai_shovels/python/coco-cvat-to-voc.py
+# depends_shovels: 
+# --- end-shovel ---
 """将 CVAT 导出的 COCO 检测标注转换为 Pascal VOC（LabelImg）XML。
 
 支持单份 COCO JSON，或目录内多份 JSON（如 train/val 各一份）。

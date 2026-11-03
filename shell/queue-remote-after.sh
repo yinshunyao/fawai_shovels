@@ -1,4 +1,21 @@
 #!/usr/bin/env bash
+# --- shovel ---
+# id: queue_remote_after
+# title: Queue remote command after blockers exit
+# when_to_use: Remote host already running long jobs; wait then run next command without killing
+# runtime: bash
+# kind: shovel
+# requires: bash, ssh; uploads queue_remote_wait
+# side_effects: remote,process
+# platforms: Linux
+# tags: remote,queue
+# privacy: public
+# completeness: 5
+# generality: 4
+# efficiency: 4
+# invoke: QUEUE_SSH=… QUEUE_REMOTE_CWD=… QUEUE_BLOCK=… QUEUE_RUN=… bash fawai_shovels/shell/queue-remote-after.sh
+# depends_shovels: queue_remote_wait,ssh_run_with_pass
+# --- end-shovel ---
 # Start a waiter on a remote host. The waiter polls ps and runs one command
 # after every blocking process has exited. It does not kill existing jobs.
 #

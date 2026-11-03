@@ -1,4 +1,21 @@
 #!/usr/bin/env bash
+# --- shovel ---
+# id: disable_systemd_osc_context
+# title: Disable systemd OSC 3008 spam
+# when_to_use: Ubuntu systemd profile prints OSC 3008 noise in terminals
+# runtime: bash
+# kind: shovel
+# requires: bash; optional sudo/ssh
+# side_effects: fs_write,remote
+# platforms: Linux
+# tags: systemd,ubuntu
+# privacy: public
+# completeness: 4
+# generality: 4
+# efficiency: 4
+# invoke: bash fawai_shovels/shell/disable-systemd-osc-context.sh
+# depends_shovels: 
+# --- end-shovel ---
 # Permanently disable systemd UAPI OSC 3008 shell spam on Ubuntu.
 #
 # Why not just `mv … .disabled`?

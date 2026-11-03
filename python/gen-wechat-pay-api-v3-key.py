@@ -1,3 +1,20 @@
+# --- shovel ---
+# id: gen_wechat_pay_api_v3_key
+# title: Generate WeChat Pay APIv3 key
+# when_to_use: Need a 32-char alphanumeric WeChat Pay APIv3 key
+# runtime: python
+# kind: shovel
+# requires: stdlib
+# side_effects: none
+# platforms: macOS,Linux,Windows
+# tags: wechat,crypto
+# privacy: public
+# completeness: 4
+# generality: 3
+# efficiency: 4
+# invoke: python3 fawai_shovels/python/gen-wechat-pay-api-v3-key.py
+# depends_shovels: 
+# --- end-shovel ---
 """Generate a WeChat Pay APIv3 key (32 alphanumeric characters).
 
 WeChat Pay requires: 32 characters, digits and upper/lower letters only.

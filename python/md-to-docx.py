@@ -1,3 +1,20 @@
+# --- shovel ---
+# id: md_to_docx
+# title: Markdown to Word
+# when_to_use: Turn generic Markdown (headings/lists/tables) into a customer-ready docx
+# runtime: python
+# kind: shovel
+# requires: python-docx
+# side_effects: fs_read,fs_write
+# platforms: macOS,Linux,Windows
+# tags: doc,docx
+# privacy: public
+# completeness: 3
+# generality: 4
+# efficiency: 3
+# invoke: python3 fawai_shovels/python/md-to-docx.py
+# depends_shovels: 
+# --- end-shovel ---
 """把通用 Markdown 转成可发给客户的 Word。
 
 覆盖报价、说明类文档用到的写法：一级/二级标题、段落、加粗、

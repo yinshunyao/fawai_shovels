@@ -1,4 +1,21 @@
 #!/usr/bin/env python3
+# --- shovel ---
+# id: photo_remove_watermark_deai
+# title: Remove corner AI watermark
+# when_to_use: Strip semi-transparent corner AI labels and add mild photo noise
+# runtime: python
+# kind: shovel
+# requires: opencv-python, numpy
+# side_effects: fs_read,fs_write
+# platforms: macOS,Linux,Windows
+# tags: media,image
+# privacy: public
+# completeness: 3
+# generality: 3
+# efficiency: 3
+# invoke: python3 fawai_shovels/media/photo-remove-watermark-deai.py
+# depends_shovels: 
+# --- end-shovel ---
 """Remove corner AI watermarks and add mild photographic imperfections.
 
 Intended for images with a semi-transparent corner label (e.g. Doubao-style

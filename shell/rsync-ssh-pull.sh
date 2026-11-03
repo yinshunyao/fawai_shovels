@@ -1,4 +1,21 @@
 #!/usr/bin/env bash
+# --- shovel ---
+# id: rsync_ssh_pull
+# title: Rsync pull over SSH
+# when_to_use: Pull remote files/dirs to local over SSH (optional password)
+# runtime: bash
+# kind: shovel
+# requires: bash, rsync, ssh; optional sshpass|expect
+# side_effects: remote,fs_write
+# platforms: macOS,Linux
+# tags: deploy,rsync,ssh
+# privacy: public
+# completeness: 5
+# generality: 5
+# efficiency: 5
+# invoke: PULL_REMOTE=user@host:<path> PULL_LOCAL=<dir> bash fawai_shovels/shell/rsync-ssh-pull.sh
+# depends_shovels: 
+# --- end-shovel ---
 # Rsync from remote over SSH into a local directory (pull).
 #
 # Required:

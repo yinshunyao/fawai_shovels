@@ -2,21 +2,24 @@
 
 中文台账: [`readme.md`](readme.md)
 
-Reusable shell/Python helper scripts for assistants (not product app code). Moved out of `.cursor/tools`.  
-Workspace rules: `.cursor/rules/rules-cursor-tools.mdc`.
+Shareable **single-file shovels** (scripts/helpers; not host product code).  
+Format: [`SHOVEL.md`](SHOVEL.md); templates + validator: `scaffold/`.
 
-**Required:** any add/change/delete/rename under this repo must update **both** `readme.md` and `readme.en.md` in the same turn.
+**Required:** new/changed shovels must (1) have a full `# --- shovel ---` header (2) update **both** ledgers (3) pass `python3 fawai_shovels/scaffold/catalog.py --check`.
 
 ## Conventions
 
-1. **Check this catalog first**, then call or patch an existing tool; update both ledgers in the same turn.
-2. **If nothing fits**, add under the right category and register here and in `readme.md`.
-3. **Do not** leave one-off helper scripts in chat or `/tmp`.
-4. Product business code stays in each project; this repo is assistant-side tooling only.
-5. **No need to register** one-shot `ls`/`cat`/`git status`; **do register** repeatable flows and new helpers.
-6. **Generality gate:** score ≥3 stays here; ≤2 and product deploy scripts go to workspace `.cursor/tools/`.
-7. **Three scores:** on add/change, the assistant must auto-score **completeness / generality / efficiency** (1–5) per the rubrics below and write them into the ledger—no blanks, no generality-only rows.
-8. **Sanitize:** docs and scripts only describe purpose, I/O shape, deps, how to invoke. No secrets, tokens, intranet hosts, customer names, unpublished data paths. Pass real values via env/args; use placeholders like `<data-dir>` in the ledger.
+1. **Platforms (mandatory).** Header `platforms` required; tokens only `macOS` / `Linux` / `Windows` (or verified `all` = all three). `runtime: bash` must not list Windows or `all`. Omitted OS = unsupported. See `SHOVEL.md`; `--check` must pass.
+2. **One shovel, one file.** `kind: library` may be imported in-repo; `launcher` may thin-wrap another shovel.
+3. **Header meta** mirrors Skill fields (`id` / `title` / `when_to_use` + runtime/requires/platforms/scores…). See `SHOVEL.md`.
+4. **No host business imports** (`fawai_avatar.*`); no unpublished paths/customer data in defaults.
+5. **`privacy: public`** only when scrubbed; otherwise do not publish the pack entry.
+6. Check this ledger / `catalog.py --list` before inventing tools; no one-off `/tmp` scripts.
+7. **Generality ≥3** stays here; ≤2 → workspace `.cursor/tools/`.
+8. Score **completeness / generality / efficiency** (1–5) in the header and both ledgers.
+9. **Sanitize:** placeholders in docs; secrets only via env.
+
+New shovel: copy `scaffold/TEMPLATE.py` or `TEMPLATE.sh` → `shell/`/`python/`/`media/` → fill meta → `--check` → register below.
 
 ## How to run
 
@@ -36,21 +39,27 @@ bash fawai_shovels/shell/workspace-fs.sh glob '**/*.md' [--path DIR]
 bash fawai_shovels/shell/workspace-fs.sh catalog rsync
 ```
 
-`grep` needs `rg` (ripgrep). Optional: `FAWAI_SHOVELS_ROOT` (legacy alias `HIPP_TOOLS_ROOT`) / `WORKSPACE_FS_PYTHON`. Project-specific tools: `.cursor/tools/`.
+`grep` needs `rg` (ripgrep). Optional: `FAWAI_SHOVELS_ROOT` (legacy `HIPP_TOOLS_ROOT`) / `WORKSPACE_FS_PYTHON`.
 
-> Renamed from `hipp-tools` to `fawai_shovels`. GitHub: https://github.com/yinshunyao/fawai_shovels (formerly `yinshunyao/hipp-tools`; old URL redirects).
+```bash
+python3 fawai_shovels/scaffold/catalog.py --check
+python3 fawai_shovels/scaffold/catalog.py --list
+```
+
+> Renamed from `hipp-tools`. GitHub: https://github.com/yinshunyao/fawai_shovels
 
 ## Categories
 
 | Dir | Role |
 |:---|:---|
-| `shell/` | Cross-project shell wrappers |
-| `python/` | Cross-project Python helpers |
-| `media/` | Image/audio helpers |
-| `git/` | Cross-project git helpers |
+| `shell/` | Bash shovels |
+| `python/` | Python shovels / libraries |
+| `media/` | Image/audio shovels |
+| `scaffold/` | Templates + `catalog.py` |
+| `git/` | Git helpers (empty) |
 | `misc/` | Uncategorized |
 
-Add a row before creating a new category. **Project-only** tools live under `.cursor/tools/<project>/` (ledger `.cursor/tools/readme.md`). This repo keeps **generality ≥3** only (scale 1–5).
+**Project-only** tools: `.cursor/tools/<project>/`.
 
 ---
 
@@ -134,6 +143,12 @@ Tables below list tools that stay in this repo (generality ≥3). Scores are ass
 |:---|:---:|:---:|:---:|:---|:---|:---|
 | `media/photo-remove-watermark-deai.py` | 3 | 3 | 3 | remove corner watermark + light “real photo” look | edit `__main__` | OpenCV+numpy; fixed corner ratios |
 | `media/redact-image-words.py` | 4 | 3 | 3 | OCR and redact sensitive words | `--input/--output/--word` | Pillow + tesseract |
+
+## scaffold/
+
+| Path | Comp. | Gen. | Eff. | Purpose | Invoke | Notes |
+|:---|:---:|:---:|:---:|:---|:---|:---|
+| `scaffold/catalog.py` | 5 | 5 | 5 | scan/validate shovel headers | `python3 fawai_shovels/scaffold/catalog.py --check` | see `TEMPLATE.*` |
 
 ## git/
 

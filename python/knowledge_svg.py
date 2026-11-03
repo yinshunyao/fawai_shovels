@@ -1,4 +1,21 @@
 #!/usr/bin/env python3
+# --- shovel ---
+# id: knowledge_svg
+# title: Shared SVG helpers for knowledge notes
+# when_to_use: Import SvgDoc/write_svg when generating UTF-8 knowledge SVGs
+# runtime: python
+# kind: library
+# requires: stdlib
+# side_effects: fs_write
+# platforms: macOS,Linux,Windows
+# tags: svg,library
+# privacy: public
+# completeness: 4
+# generality: 3
+# efficiency: 5
+# invoke: from knowledge_svg import SvgDoc, write_svg
+# depends_shovels: 
+# --- end-shovel ---
 """Shared helpers for UTF-8 knowledge-base SVGs under 识别问题/基础知识.
 
 Import from sibling scripts, or:

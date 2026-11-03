@@ -1,4 +1,21 @@
 #!/usr/bin/env bash
+# --- shovel ---
+# id: rsync_ssh_deploy
+# title: Rsync deploy over SSH
+# when_to_use: Push a local directory to a remote host over SSH (optional password)
+# runtime: bash
+# kind: shovel
+# requires: bash, rsync, ssh; optional sshpass|expect
+# side_effects: remote,fs_write
+# platforms: macOS,Linux
+# tags: deploy,rsync,ssh
+# privacy: public
+# completeness: 5
+# generality: 5
+# efficiency: 5
+# invoke: DEPLOY_LOCAL=<dir> DEPLOY_REMOTE=user@host:<dir> bash fawai_shovels/shell/rsync-ssh-deploy.sh
+# depends_shovels: 
+# --- end-shovel ---
 # Rsync a local directory to remote over SSH.
 #
 # Required:

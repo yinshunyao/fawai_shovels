@@ -1,5 +1,22 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+# --- shovel ---
+# id: remote_job_status_py
+# title: Summarize local queue/train jobs
+# when_to_use: On training machine (or via launcher): list running/queued/done jobs
+# runtime: python
+# kind: shovel
+# requires: stdlib
+# side_effects: fs_read,process
+# platforms: Linux
+# tags: queue,status
+# privacy: public
+# completeness: 4
+# generality: 4
+# efficiency: 4
+# invoke: python3 fawai_shovels/python/remote-job-status.py
+# depends_shovels: 
+# --- end-shovel ---
 """Summarize remote training / queue jobs in one working directory.
 
 Intended to run on the training machine (or via ``shell/remote-job-status.sh``).

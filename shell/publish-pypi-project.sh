@@ -1,4 +1,21 @@
 #!/usr/bin/env bash
+# --- shovel ---
+# id: publish_pypi_project
+# title: Build and twine-upload another project
+# when_to_use: Publish a pyproject.toml project to PyPI (not this catalog itself)
+# runtime: bash
+# kind: shovel
+# requires: bash, python, twine, build
+# side_effects: network,fs_write
+# platforms: macOS,Linux
+# tags: pypi,publish
+# privacy: public
+# completeness: 4
+# generality: 5
+# efficiency: 4
+# invoke: PUBLISH_ROOT=<project> bash fawai_shovels/shell/publish-pypi-project.sh
+# depends_shovels: 
+# --- end-shovel ---
 # Build and upload a Python project (pyproject.toml) to PyPI via twine.
 #
 # Required:
