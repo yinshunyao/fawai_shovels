@@ -2,7 +2,7 @@
 """Check knowledge-base SVG files: UTF-8 text, well-formed-ish XML, basic SVG root.
 
 Usage (from workspace root, or any cwd):
-  python3 hipp-tools/python/check-knowledge-svg.py <svg-or-dir> [...]
+  python3 fawai_shovels/python/check-knowledge-svg.py <svg-or-dir> [...]
 
 Exit 0 if all pass; 1 if any fail. Prints one line per file: OK / FAIL reason.
 """

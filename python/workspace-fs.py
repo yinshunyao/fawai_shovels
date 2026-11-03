@@ -4,10 +4,10 @@
 Requires: Python 3.8+ (stdlib). Subcommand `grep` needs `rg` (ripgrep) on PATH.
 
 Examples:
-  python3 hipp-tools/python/workspace-fs.py read path/to/file.md --offset 1 --limit 40
-  python3 hipp-tools/python/workspace-fs.py grep 'TODO' --path . --glob '*.py' -i --head-limit 20
-  python3 hipp-tools/python/workspace-fs.py glob '**/*.md' --path study --head-limit 30
-  python3 hipp-tools/python/workspace-fs.py catalog rsync
+  python3 fawai_shovels/python/workspace-fs.py read path/to/file.md --offset 1 --limit 40
+  python3 fawai_shovels/python/workspace-fs.py grep 'TODO' --path . --glob '*.py' -i --head-limit 20
+  python3 fawai_shovels/python/workspace-fs.py glob '**/*.md' --path study --head-limit 30
+  python3 fawai_shovels/python/workspace-fs.py catalog rsync
 """
 
 from __future__ import annotations
@@ -161,19 +161,22 @@ def cmd_glob(args: argparse.Namespace) -> int:
 
 
 def _tools_root() -> Path:
-    env = os.environ.get("HIPP_TOOLS_ROOT", "").strip()
+    env = (
+        os.environ.get("FAWAI_SHOVELS_ROOT", "").strip()
+        or os.environ.get("HIPP_TOOLS_ROOT", "").strip()  # legacy alias
+    )
     if env:
         return Path(env).expanduser().resolve()
-    # this file: hipp-tools/python/workspace-fs.py
+    # this file: fawai_shovels/python/workspace-fs.py
     return Path(__file__).resolve().parents[1]
 
 
 def cmd_catalog(args: argparse.Namespace) -> int:
-    """Search tool ledgers (hipp-tools/readme.md and optional .cursor/tools/readme.md)."""
-    roots = [_tools_root()]
-    # sibling .cursor/tools when hipp-tools sits under ai-company
-    cursor_tools = _tools_root().parent / ".cursor" / "tools" / "readme.md"
-    ledgers = [roots[0] / "readme.md"]
+    """Search tool ledgers (zh/en fawai_shovels readmes and optional .cursor/tools/readme.md)."""
+    root = _tools_root()
+    ledgers = [root / "readme.md", root / "readme.en.md"]
+    # sibling .cursor/tools when fawai_shovels sits under ai-company
+    cursor_tools = root.parent / ".cursor" / "tools" / "readme.md"
     if cursor_tools.is_file():
         ledgers.append(cursor_tools)
 
@@ -245,7 +248,7 @@ def build_parser() -> argparse.ArgumentParser:
     pl.add_argument("--head-limit", type=int, default=None)
     pl.set_defaults(func=cmd_glob)
 
-    pc = sub.add_parser("catalog", help="Search hipp-tools / .cursor/tools readme ledgers")
+    pc = sub.add_parser("catalog", help="Search fawai_shovels / .cursor/tools readme ledgers")
     pc.add_argument("query", nargs="+", help="keywords (AND)")
     pc.add_argument("--head-limit", type=int, default=None)
     pc.set_defaults(func=cmd_catalog)

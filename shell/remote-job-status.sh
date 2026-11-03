@@ -16,7 +16,7 @@
 # Example:
 #   STATUS_SSH=user@host STATUS_REMOTE_CWD=/path/to/FgBgAug STATUS_SSH_PORT=22 \
 #   STATUS_SSH_PASS=<pass> STATUS_DAYS=3 STATUS_LIMIT=15 \
-#   bash hipp-tools/shell/remote-job-status.sh
+#   bash fawai_shovels/shell/remote-job-status.sh
 set -euo pipefail
 
 : "${STATUS_SSH:?set STATUS_SSH}"

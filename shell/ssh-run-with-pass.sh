@@ -3,8 +3,8 @@
 # Prefer ssh keys; password is optional and must stay in env (never commit).
 #
 # Usage:
-#   SSH_PASS=<pass> bash hipp-tools/shell/ssh-run-with-pass.sh -- ssh user@host 'cmd'
-#   HIPP_DEPLOY_SSH_PASS=<pass> bash hipp-tools/shell/ssh-run-with-pass.sh -- rsync -av …
+#   SSH_PASS=<pass> bash fawai_shovels/shell/ssh-run-with-pass.sh -- ssh user@host 'cmd'
+#   HIPP_DEPLOY_SSH_PASS=<pass> bash fawai_shovels/shell/ssh-run-with-pass.sh -- rsync -av …
 # Optional:
 #   SSH_PASS_TIMEOUT  expect timeout seconds (default 900)
 #

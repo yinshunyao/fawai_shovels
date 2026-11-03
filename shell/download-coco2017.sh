@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Download COCO 2017 detect packs (train/val images + trainval annotations) into DEST.
 # Usage:
-#   DEST=<数据目录> bash hipp-tools/shell/download-coco2017.sh
-#   bash hipp-tools/shell/download-coco2017.sh <数据目录>
+#   DEST=<数据目录> bash fawai_shovels/shell/download-coco2017.sh
+#   bash fawai_shovels/shell/download-coco2017.sh <数据目录>
 # Optional:
 #   COCO_SKIP_TRAIN=1   only val + annotations
 #   COCO_WITH_TEST=1    also test2017 images + image_info (no public boxes)

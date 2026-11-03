@@ -2,8 +2,8 @@
 # Download PASCAL VOC packs used by Ultralytics YOLO VOC.yaml (2007 trainval/test + 2012 trainval).
 # Default: download archives only (no unzip). Uses Ultralytics GitHub release assets (.zip), same as VOC.yaml.
 # Usage:
-#   DEST=<数据目录> bash hipp-tools/shell/download-voc-yolo.sh
-#   bash hipp-tools/shell/download-voc-yolo.sh <数据目录>
+#   DEST=<数据目录> bash fawai_shovels/shell/download-voc-yolo.sh
+#   bash fawai_shovels/shell/download-voc-yolo.sh <数据目录>
 # Optional:
 #   VOC_UNZIP=1   also unzip after download (needs unzip + enough free space)
 set -euo pipefail

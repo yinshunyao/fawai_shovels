@@ -2,7 +2,7 @@
 """几行中文合成一张小红书竖版字图（3:4）。
 
 用法：改 __main__ 里的 LINES / OUT 后运行
-  python3 hipp-tools/python/xhs-text-card.py
+  python3 fawai_shovels/python/xhs-text-card.py
 """
 
 from __future__ import annotations
